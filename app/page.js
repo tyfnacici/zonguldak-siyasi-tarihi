@@ -22,7 +22,10 @@ export default async function Home() {
   const pages = await fetchPages();
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-4 py-6">
-      <h1 className="text-2xl font-bold mb-6">Zonguldak İlinde Siyaset</h1>
+      <div className='flex flex-col items-center justify-center text-center gap-y-[10px]'>
+      <h1 className="text-2xl font-bold">Zonguldak İlinde Siyaset</h1>
+      <p className='pb-6'>Geliştirici: Tayfun Açıcı</p>
+      </div>
       <div className="w-full max-w-6xl">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
           {pages.map((page, index) => (
