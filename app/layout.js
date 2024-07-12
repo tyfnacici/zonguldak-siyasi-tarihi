@@ -6,7 +6,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>Zonguldak Siyasi Tarihi</title>
       </head>
-      <body className='bg-white'>
+      <body className='bg-white text-black'>
         {children}
       </body>
     </html>
