@@ -1,3 +1,4 @@
+// app/page.js
 import axios from 'axios';
 import cheerio from 'cheerio';
 import Link from 'next/link';
@@ -7,6 +8,7 @@ async function fetchPages() {
   const { data } = await axios.get(url);
   const $ = cheerio.load(data);
   const pages = [];
+  $('li:contains("Şablon:Zonguldak\'ta seçimler")').remove();
   $('#mw-pages a').each((index, element) => {
     pages.push({
       title: $(element).text(),
@@ -19,17 +21,19 @@ async function fetchPages() {
 export default async function Home() {
   const pages = await fetchPages();
   return (
-    <div>
-      <h1>Zonguldak İlinde Siyaset</h1>
-      <ul>
-        {pages.map((page, index) => (
-          <li key={index}>
-            <Link href={`/${page.href.replace('/wiki/', '')}`} legacyBehavior>
-              <a>{page.title}</a>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white px-4 py-6">
+      <h1 className="text-2xl font-bold mb-6">Zonguldak İlinde Siyaset</h1>
+      <div className="w-full max-w-6xl">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+          {pages.map((page, index) => (
+            <Link key={index} href={`/${page.href.replace('/wiki/', '')}`} legacyBehavior>
+              <a className="block bg-slate-200 p-4 rounded shadow-md text-center text-blue-500 hover:bg-blue-100 hover:underline">
+                {page.title}
+              </a>
             </Link>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
