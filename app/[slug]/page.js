@@ -67,7 +67,7 @@ export default async function Page({ params }) {
         <div className="container mx-auto max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden p-6 space-y-6">
           <a href="/" className="block text-center text-blue-600 hover:underline text-lg">Geri Dön</a>
           <h1 className="text-2xl font-bold md:text-3xl lg:text-4xl text-center">{title}</h1>
-          <div className="prose lg:prose-xl mx-auto flex items-center flex-col gap-y-8" dangerouslySetInnerHTML={{ __html: content }} />
+          <div className="prose lg:prose-xl mx-auto flex items-center text-black flex-col gap-y-8" dangerouslySetInnerHTML={{ __html: content }} />
         </div>
       </div>
     </>
