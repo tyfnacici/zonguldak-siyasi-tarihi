@@ -3,6 +3,7 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 import { notFound } from 'next/navigation';
 import Head from 'next/head';
+import Link from 'next/link';
 
 // Wikipedia'dan içerik çekme fonksiyonu
 async function fetchPageContent(slug) {
@@ -63,11 +64,11 @@ export default async function Page({ params }) {
         <title className='text-black'>{title}</title>
         <meta name="description" content={`Wikipedia sayfası: ${title}`} />
       </Head>
-      <div className="min-h-screen bg-gray-100 p-4 md:p-8 flex items-center justify-center">
-        <div className="container mx-auto max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden p-6 space-y-6">
-          <a href="/" className="block text-center text-blue-600 hover:underline text-lg">Geri Dön</a>
+      <div className="min-h-screen bg-gray-100 p-0 sm:p-4 md:p-8 flex items-center justify-center">
+        <div className="container mx-auto max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden px-2 sm:p-4 md:p-8 space-y-6">
+          <Link href="/" className="block text-center text-blue-600 hover:underline text-lg pt-8 sm:pt-0">Geri Dön</Link>
           <h1 className="text-2xl text-black font-bold md:text-3xl lg:text-4xl text-center">{title}</h1>
-          <div className="prose lg:prose-xl mx-auto flex items-center text-black flex-col gap-y-8" dangerouslySetInnerHTML={{ __html: content }} />
+          <div className="prose lg:prose-xl mx-auto flex items-center text-black flex-col gap-y-8 overflow-x-auto sm:overflow-x-hidden whitespace-normal" dangerouslySetInnerHTML={{ __html: content }} />
         </div>
       </div>
     </>
